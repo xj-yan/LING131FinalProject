@@ -1,12 +1,10 @@
-import abc
-from abc_base import AbstractModelClass
+from abc import ABCMeta, abstractmethod
+from AbstractClassifier import AbstractClassifier
 
-class NeuralNetwork(AbstractModelClass):
+class NeuralNetwork(AbstractClassifier):
 	"""docstring for NeuralNetwork"""
 	def __init__(self, arg):
-		super(NeuralNetwork, self).__init__()
 		self.arg = arg
 		
-	def train(self, training_set):
 		
 		
