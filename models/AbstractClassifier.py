@@ -1,27 +1,27 @@
 from abc import ABCMeta, abstractmethod
+from collections import defaultdict
 
 class AbstractClassifier(object):
     __metaclass__ = ABCMeta
 
     @abstractmethod
     def __init__(self):
-    	"""
+        """
         abstract class should not be able to be initialized
         """
-    	pass
+        pass
 
     @abstractmethod
     def labels(self): 
-    	"""
+        """
         :return: the list of labels
         :rtype: list of (immutable)
         """
         pass
 
     @abstractmethod
-    def train(self): 
+    def train(self, labeled_feature_set): 
         pass
-
 
     @abstractmethod
     def classify(self, feature_set): 
@@ -31,20 +31,25 @@ class AbstractClassifier(object):
         """
         pass
 
-    # concrete method
+    @abstractmethod
     def mass_classify(self, feature_sets): 
         """
         :return: the most appropriate label for the given featureset.
         :rtype: list of labels
         """
-        return [classify(self, fs) for fs in feature_sets]
+        return [self.classify(fs) for fs in feature_sets]
     
-    # concrete method
-    def acurracy(self, test_set): 
-        predicted = mass_classify(self, [test[0] for test in test_set])
-        expected = [test[1] for test in test_set]
+    @abstractmethod
+    def accuracy(self, test_set): 
         count = 0
-        for idx, val in enumerate(predicted):
-            if expected[idx] == val:
+        total = 0
+        # print(test_set[1][1], self.classify(test_set[1][0]))
+        # return 0
+        for test in test_set:
+            fff = self.classify(test[0])
+            print(test[1], fff)
+            if test[1] == fff:
                 count += 1
-        return float(count) / len(expected)
+            total += 1
+        return float(count) / total
+        
