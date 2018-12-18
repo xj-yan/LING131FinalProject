@@ -20,7 +20,9 @@ from sklearn.ensemble import AdaBoostClassifier
 from sklearn.feature_extraction import DictVectorizer
 import nltk
 from nltk import word_tokenize, sent_tokenize
-
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.neural_network import MLPClassifier
+from sklearn.metrics import classification_report,confusion_matrix
 
 stop_words = set(stopwords.words('english'))
 
@@ -126,20 +128,51 @@ def run_adaboost_classifier(feature):
     model = AdaBoostClassifier()
     model.fit(Xtrain, Ytrain)
     print("classification rate for AdaBoost :", model.score(Xtest, Ytest))
+    predictions = model.predict(Xtest)
+    print(classification_report(Ytest,predictions))
+    
+def run_MultinomialNB_classifier(feature): 
+    X, Y=feature(data)
+    Xtrain, Xtest, Ytrain, Ytest = train_test_split(X, Y, test_size=0.33)
+    model = MultinomialNB()
+    model.fit(Xtrain, Ytrain)
+    print("classification rate for MultinomialNB :", model.score(Xtest, Ytest))
+    predictions = model.predict(Xtest)
+    print(classification_report(Ytest,predictions))
+    
+def run_MLP_Classifier(feature):
+    X, Y=feature(data)
+    Xtrain, Xtest, Ytrain, Ytest = train_test_split(X, Y, test_size=0.33)
+    model = MLPClassifier(hidden_layer_sizes=(30,30,30))
+    model.fit(Xtrain, Ytrain)
+    print("classification rate for Multi-Layer Perceptron Classifier :", model.score(Xtest, Ytest))
+    predictions = model.predict(Xtest)
+    print(classification_report(Ytest,predictions))
+    
 
 if __name__ == '__main__':
 
     data = load_data()
     print("with count feature, ") 
     run_adaboost_classifier(count_features)
+    run_MultinomialNB_classifier(count_features)
+    run_MLP_Classifier(count_features)
     print("with TFIDF feature, ") 
     run_adaboost_classifier(TFIDF_features)
+    run_MultinomialNB_classifier(TFIDF_features)
+    run_MLP_Classifier(TFIDF_features)
     print("with 5-gram charater cross word bound, ") 
     run_adaboost_classifier(ngram_char_crossW_features)
+    run_MultinomialNB_classifier(ngram_char_crossW_features)
+    run_MLP_Classifier(ngram_char_crossW_features)
     print("with 5-gram charater within word bound, ")
     run_adaboost_classifier(ngram_char_features)
+    run_MultinomialNB_classifier(ngram_char_features)
+    run_MLP_Classifier(ngram_char_features)
     print("with bigram word feature")
     run_adaboost_classifier(Bigram_word_features)
+    run_MultinomialNB_classifier(Bigram_word_features)
+    run_MLP_Classifier(Bigram_word_features)
     labeled_data=create_labeled_data(data)
     tokens=tokenize_labeled_data(labeled_data)
     word_feature=frequent_200_words(tokens)
@@ -150,9 +183,15 @@ if __name__ == '__main__':
     model.fit(Xtrain, Ytrain)
     print("with self difined binary feature, ", )
     print("classification rate for AdaBoost :", model.score(Xtest, Ytest))
-    
-    
-    
-    
-    
-    
+    predictions = model.predict(Xtest)
+    print(classification_report(Ytest,predictions))
+    model = MultinomialNB()
+    model.fit(Xtrain, Ytrain)
+    print("classification rate for multinomialNB :", model.score(Xtest, Ytest))
+    predictions = model.predict(Xtest)
+    print(classification_report(Ytest,predictions))
+    model = MLPClassifier(hidden_layer_sizes=(30,30,30))
+    model.fit(Xtrain, Ytrain)
+    print("classification rate for Multi-Layer Perceptron Classifier :", model.score(Xtest, Ytest))
+    predictions = model.predict(Xtest)
+    print(classification_report(Ytest,predictions))
