@@ -6,7 +6,11 @@
 4 bigram of words
 5 ngram of characters within word bound
 6 ngram of characters acorss word bound
-<2>use Adaboost from sklearn as an example model to test the feature extractor and the evaluation methods
+<2>analyze with three model from sklearn
+1 adaboost
+2 MultinomialNB
+3 MLPClassifier
+
 """
 
 
