@@ -1,5 +1,5 @@
 from abc import ABCMeta, abstractmethod
-from AbstractClassifier import AbstractClassifier
+from models.AbstractClassifier import AbstractClassifier
 import numpy as np
 
 class NeuralNetwork(AbstractClassifier):
@@ -24,7 +24,18 @@ class NeuralNetwork(AbstractClassifier):
         self._weight1 = np.random.random((x.shape[1], dim2))
         self._weight2 = np.random.random((dim2, 1))
 
+    def labels(self):
+        """
+        :return a list of labels
+        :return type list
+        """
+        return self._labels
+
     def sigmoid(self, x):
+        """
+        :return 
+        :return float
+        """
         return 1.0 / (1.0 + np.exp(-x))
 
     def derivative(self, x):

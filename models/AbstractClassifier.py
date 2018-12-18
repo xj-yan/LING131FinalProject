@@ -51,5 +51,5 @@ class AbstractClassifier(object):
             if test[1] == fff:
                 count += 1
             total += 1
-        return float(count) / total
+        return 100 * count / total
         

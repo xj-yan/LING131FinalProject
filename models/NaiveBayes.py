@@ -48,7 +48,8 @@ class NaiveBayes(AbstractClassifier):
                 # only existing features are counted
                 if (label, feature_name) in self._feature_prob_dist.keys():
                     if feature_value in self._feature_prob_dist[label, feature_name].keys():
-                        prob_by_label[label] *= float(self._feature_prob_dist[label, feature_name][feature_value])
+                        prob_by_label[label] += float(self._feature_prob_dist[label, feature_name][feature_value])
+
         total = 0
         for label in prob_by_label.keys():
             total += prob_by_label[label]
@@ -80,14 +81,9 @@ class NaiveBayes(AbstractClassifier):
         	# Record label frequency distribution
             label_freq_dist[label] += 1
             for feature_name, feature_value in feature_set.items():
-                # Record a list of feature names
+                # Record a set of feature names
                 feature_names.add(feature_name)
-                # Record 'feature_name' can take this value
-                # feature_values[feature_name].add(feature_value)
                 # Record the frequency of 'feature_value' under 'feature_name' given 'label'
-                # problem: 
-                # 1. a feature set that does not have this feature
-                # 2. 
                 feature_freq_dist[label, feature_name][feature_value] += 1
         # print(feature_freq_dist)
         # Probabilities
@@ -104,9 +100,6 @@ class NaiveBayes(AbstractClassifier):
             length = label_freq_dist[label]
             probdist = {}
             for feature_value, value_freq in freq_dist.items():
-                # smoothing
-                if value_freq == 0:
-                    value_freq += 1
                 probdist[feature_value] = float(value_freq) / float(length)
             feature_prob_dist[label, feature_name] = probdist
         # print(feature_prob_dist)
