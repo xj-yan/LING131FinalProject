@@ -1,3 +1,10 @@
+"""
+The file is designed to generate feature sets.
+I tried three ways to generate features sets, including tdidf coefficients, raw counts, and percentage of each word in single document.
+
+"""
+
+
 import pandas as pd
 import string
 from nltk.corpus import stopwords
