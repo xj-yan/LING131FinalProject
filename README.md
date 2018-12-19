@@ -8,8 +8,20 @@ Part two involves the implementation of almost every part of our course without 
 In part three, we write a program that interacts with a user through command line.
 
 ## Part One: Classification using sklearn models
+This part is in the file 'analysis_sklearn.py'. This file contains five functions to use sklearn methods to extract features of count, TFIDF, bigram words,ngram characters within word bound and ngram characters accross word bound. 
+Then there is a self defined method to extract binary features of whether the most frequent 200 words are in the certain file.
+After that, are several functions to run three different models from sklearn.
+This file can be directly run with'python3 analysis_sklearn.py'.
+The printed out result of this commond should looks like the follows:
+With count feature
+classification rate for Adaboost:(the accuracy here)
+classification report(table) for this combination of Adaboost model and count feature
+classification rate for multinomialNB: (the accuracy here)
+classification report(table) for this combination of multinomialNB model and count feature
+classification rate for Multi-Layer Perceptron Classifier: (the accuracy here)
+classification report(table) for this combination of Multi-Layer Perceptron Classifier model and count feature
 
-
+and then the printed out result on the screen will repeat this format of results with other five features.
 
 
 ## Part Two: Simplified Modules used in Text Classification
