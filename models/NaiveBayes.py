@@ -1,15 +1,23 @@
 from abc import ABCMeta, abstractmethod
-from AbstractClassifier import AbstractClassifier 
-from math import log
-from collections import defaultdict
+from models.AbstractClassifier import AbstractClassifier
+import numpy as np
 
 class NaiveBayes(AbstractClassifier):
     """
     docstring for NaiveBayes
     
-
     """
     # override
+    def __init__(self, x, y, alpha = 1.0):
+        """
+        Intitialization
+        _alpha: smoothing
+        """
+        self._alpha = alpha
+        self._x = x
+        self._y = y
+        self._labels = np.unique(y)
+
     def labels(self):
         """
         :return a list of labels
@@ -17,118 +25,39 @@ class NaiveBayes(AbstractClassifier):
         """
         return self._labels
 
-    def most_possible_label(self, prob_by_label):
-        """
-        :param prob_by_label: ``{label: probability}``
-        :return: most possible label name
-        """
-
-        maxProb = 0
-        result = ''
-        for label in prob_by_label:
-            if prob_by_label[label] > maxProb:
-                maxProb = prob_by_label[label]
-                result = label
-        print(prob_by_label)
-        return result
-
-    def bayes_rule(self, feature_set):
-        """
-        Apply the bayes rule to calculate P(feature_value|label, feature_name)s
-        :param feature_set: a dictionary of features
-        :return: most possible label
-        """
-        prob_by_label = defaultdict(float)
-
-        for label in self._labels:
-            prob_by_label[label] = float(self._label_prob_dist[label])
-
-        for label in self._labels:
-            for feature_name, feature_value in feature_set.items():
-                # only existing features are counted
-                if (label, feature_name) in self._feature_prob_dist.keys():
-                    if feature_value in self._feature_prob_dist[label, feature_name].keys():
-                        prob_by_label[label] += float(self._feature_prob_dist[label, feature_name][feature_value])
-
-        total = 0
-        for label in prob_by_label.keys():
-            total += prob_by_label[label]
-        for label in prob_by_label:
-            prob_by_label[label] = prob_by_label[label] / total
-        # print(prob_by_label)
-        return self.most_possible_label(prob_by_label)
-    
     # override
-    def classify(self, feature_set):
+    def train(self):
         """
-        :param feature_set: a dictionary of features
-        :return: most possible label
+        :param: x
+        :param: y
         """
-        return self.bayes_rule(feature_set)
-
-    def label_feature_prob_dist(self, labeled_feature_set):
-        """
-        :param labeled_feature_set: A list of labeled featuresets, 
-            in the form of a list of tuples ``(featureset, label),...``.
-        """
-        # Frequencies
-        label_freq_dist = defaultdict(int)
-        feature_freq_dist = defaultdict(lambda: defaultdict(int))
-        # feature_values = defaultdict(set)
-        feature_names = set()
-
-        for feature_set, label in labeled_feature_set:
-        	# Record label frequency distribution
-            label_freq_dist[label] += 1
-            for feature_name, feature_value in feature_set.items():
-                # Record a set of feature names
-                feature_names.add(feature_name)
-                # Record the frequency of 'feature_value' under 'feature_name' given 'label'
-                feature_freq_dist[label, feature_name][feature_value] += 1
-        # print(feature_freq_dist)
-        # Probabilities
-        label_prob_dist = defaultdict(float)
-        feature_prob_dist = defaultdict(lambda: defaultdict(float))
-
-        # P(label) distribution
-        label_length = len(labeled_feature_set)
-        for label in self._labels:
-            label_prob_dist[label] = float(label_freq_dist[label]) / float(label_length)
-
-        # P(feature_value|label, feature_name) distribution
-        for ((label, feature_name), freq_dist) in feature_freq_dist.items():
-            length = label_freq_dist[label]
-            probdist = {}
-            for feature_value, value_freq in freq_dist.items():
-                probdist[feature_value] = float(value_freq) / float(length)
-            feature_prob_dist[label, feature_name] = probdist
-        # print(feature_prob_dist)
-        return label_prob_dist, feature_prob_dist
-
-    # override
-    def train(self, labeled_feature_set):
-        """
-        :param labeled_feature_set: A list of labeled featuresets, 
-            in the form of a list of tuples ``(featureset, label),...``.
-        """
-        self._labels = list(set(lf[1] for lf in labeled_feature_set))
-        self._label_prob_dist, self._feature_prob_dist = self.label_feature_prob_dist(labeled_feature_set)
+        x = self._x
+        y = self._y
+        group_by_class = [[a for a, b in zip(x, y) if b == c]for c in self._labels]
+        total_length = x.shape[0]
+        # probability by class
+        self._prob_by_class = [np.log(len(i) / total_length) for i in group_by_class]
+        count_by_class = np.array([np.array(i).sum(axis = 0) for i in group_by_class]) + self._alpha
+        # probability of each feature given class
+        self._prob_by_feature = np.log(1.0 * count_by_class / count_by_class.sum(axis = 1)[np.newaxis].T)
         return self
 
-    def __init__(self, labeled_feature_set=None):
+    # override
+    def classify(self, x_test):
         """
-        Intitialization
-        _labels: labels
-           type: list
-        _label_prob_dist: P(lable) distribution 
-           type: dictionary
-        _feature_prob_dist: P(feature_value|label, feature_name) distribution
-           type: dictioary of dictionaries
+        :param x_set: an array of feature set
+        :return: most possible labels
         """
-        self._labels = []
-        self._label_prob_dist = {}
-        self._feature_prob_dist = defaultdict(lambda: defaultdict(float))
-        if(labeled_feature_set is not None):
-            train(self, labeled_feature_set)
+        prob_by_testset = [self._prob_by_class + (self._prob_by_feature * i).sum(axis = 1) for i in x_test]
+        return np.argmax(prob_by_testset)
+
+    def accuracy(self, x, y):
+        length = y.shape[0]
+        x = self.classify(x)
+        return (100.0 * (x == y).sum(axis = 0) / length)[0]
+        # return x
+        
+
+    
 
 
