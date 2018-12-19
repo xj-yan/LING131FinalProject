@@ -4,7 +4,6 @@ import random
 from sklearn.preprocessing import LabelEncoder
 import nltk
 
-
 # we store the label of data in y_enc, and raw text in raw_text
 # the final processed is the raw_text after wbeing processed
 random.seed(2018)
@@ -160,3 +159,7 @@ for i in range(len(processed)):
                 processed[i] = ' '.join(sent)
                 break
 print('done')
+
+
+print(processed)
+print("finish")
