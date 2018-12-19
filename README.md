@@ -10,10 +10,19 @@ In part three, we write a program that interacts with a user through command lin
 ## Part One: Classification using sklearn models
 
 
+
+
 ## Part Two: Simplified Modules used in Text Classification
 
-### Spam Classification Using Self-written Models
-This part is in the file analysis_model.py. To run this code, one must make sure that `numpy`, `pandas`, and `sklearn` are installed. These tools are used to pre-process the text data and extract features before creating classifiers.
+### 2.1
+
+
+### 2.2
+
+
+### 2.3 Spam Classification Using Self-written Models
+
+This part is in the file `analysis_model.py`. To run this code, one must make sure that `numpy`, `pandas`, and `sklearn` are installed. These tools are used to pre-process the text data and extract features before creating classifiers.
 
 The code could be run in the Pycharm IDE as well as command line. Just type `python3 analysis_model.py` and press Enter, and you will get a result.
 
