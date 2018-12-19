@@ -99,6 +99,7 @@ class NeuralNetwork(AbstractClassifier):
             # update weight vector
             self._weight1 += w1
             self._weight2 += w2
+        return self
 
     # override
     def classify(self, x_test):

@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a653ea4-f919-45f9-9fff-dbc1933af59c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analysis_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis_models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/easy_testing.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/NaiveBayes.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/NaiveBayes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/AbstractClassifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/AbstractClassifier.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/NeuralNetwork.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/NeuralNetwork.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/small_test_set.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="analysis_models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="analysis_models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analysis_models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="82" column="43" selection-start-line="82" selection-start-column="43" selection-end-line="82" selection-end-column="43" />
+            <state relative-caret-position="266">
+              <caret line="99" column="68" selection-start-line="99" selection-start-column="68" selection-end-line="99" selection-end-column="68" />
               <folding>
                 <element signature="e#0#46#0" expanded="true" />
               </folding>
@@ -30,11 +28,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="AbstractClassifier.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/AbstractClassifier.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="NeuralNetwork.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/NeuralNetwork.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="14" />
+            <state relative-caret-position="1008">
+              <caret line="42" column="27" lean-forward="true" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -45,11 +52,20 @@
       <file leaf-file-name="NaiveBayes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/NaiveBayes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
+            <state relative-caret-position="-32">
               <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="310">
+              <caret line="28" column="48" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -60,6 +76,7 @@
     <findStrings>
       <find>MLP</find>
       <find>nltk</find>
+      <find>PD</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -70,11 +87,12 @@
       <list>
         <option value="$PROJECT_DIR$/analysis.py" />
         <option value="$PROJECT_DIR$/models/easy_testing.py" />
-        <option value="$PROJECT_DIR$/models/AbstractClassifier.py" />
-        <option value="$PROJECT_DIR$/models/NeuralNetwork.py" />
         <option value="$PROJECT_DIR$/easy_testing.py" />
         <option value="$PROJECT_DIR$/models/NaiveBayes.py" />
+        <option value="$PROJECT_DIR$/models/AbstractClassifier.py" />
+        <option value="$PROJECT_DIR$/models/NeuralNetwork.py" />
         <option value="$PROJECT_DIR$/analysis_models.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -336,26 +354,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/AbstractClassifier.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-344">
-          <caret column="39" selection-start-column="39" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/NeuralNetwork.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="14" />
+        <state relative-caret-position="1008">
+          <caret line="42" column="27" lean-forward="true" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models/AbstractClassifier.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/models/NaiveBayes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
+        <state relative-caret-position="-32">
           <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
@@ -365,11 +383,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/analysis_models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="82" column="43" selection-start-line="82" selection-start-column="43" selection-end-line="82" selection-end-column="43" />
+        <state relative-caret-position="266">
+          <caret line="99" column="68" selection-start-line="99" selection-start-column="68" selection-end-line="99" selection-end-column="68" />
           <folding>
             <element signature="e#0#46#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="28" column="48" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
         </state>
       </provider>
     </entry>
