@@ -6,7 +6,7 @@ class AbstractClassifier(object):
     @abstractmethod
     def labels(self): 
         """
-        :return: the list of labels
+        :return: list of labels
         :rtype: list of (immutable)
         """
         pass

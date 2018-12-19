@@ -19,10 +19,6 @@ def tfidf_feature(X):
     tfidf_vectorizer = TfidfVectorizer(decode_error='ignore')
     X = tfidf_vectorizer.fit_transform(X)
     return X.toarray()
-#
-# # 3. bigram
-# def bigram_feature(X):
-#
 
 # run NaiveBayes classifier
 def run_naivebayes_classifier(x_train, y_train, x_test, y_test):
@@ -39,7 +35,7 @@ def run_neuralnetwork_classifier(x_train, y_train, x_test, y_test, hidden_layer_
 
 
 # read raw data and label from file
-def read_from_file(file_name):
+def read_from_csv(file_name):
     data = pd.read_csv(file_name, encoding = "ISO-8859-1")
     raw_text = list(data['v2'])
     label = list(data['v1'])
@@ -66,7 +62,7 @@ def standardize_y(Y):
 
 def main():
     # read from file
-    X, Y = read_from_file('spam.csv')
+    X, Y = read_from_csv('spam.csv')
     # standardize y
     y = standardize_y(Y)
     # 1. Raw Count
@@ -82,7 +78,7 @@ def main():
     #     neurons in hidden layer        iteration time              RESULT
     #             4                        600                59.06642728904848
     #             4                        400                57.091561938958705
-    run_neuralnetwork_classifier(x_train, y_train, x_test, y_test, 4, 400)
+    run_neuralnetwork_classifier(x_train, y_train, x_test, y_test, 4, 600)
     #     Naive Bayes:
     #     Result: 87.07
     run_naivebayes_classifier(x_train, y_train, x_test, y_test)
@@ -101,30 +97,10 @@ def main():
     #     neurons in hidden layer        iteration time              RESULT
     #             4                         600                91.38240574506284
     #             4                         400                88.50987432675045
-    run_neuralnetwork_classifier(x_train, y_train, x_test, y_test, 4, 400)
+    run_neuralnetwork_classifier(x_train, y_train, x_test, y_test, 4, 600)
     #     Naive Bayes:
     #     Result: 87.07
     run_naivebayes_classifier(x_train, y_train, x_test, y_test)
-
-    #
-    #
-    # # 3. Most frequent 200 words
-    # print('Feature: Most frequent 200 words')
-    # # Step 1: feature extraction
-    # x3 = bigram_feature(copy.deepcopy(X))
-    # # Step 2: feature scaling
-    # x3 = preprocessing.scale(x3) # feature scaling
-    # # Step 3: divide into training and test set
-    # x_train, y_train, x_test, y_test = train_test_split(x3, y, 0.9)
-    # # Step 4: run classifiers
-    # #     Neural Network:
-    # #     neurons in hidden layer        iteration time              RESULT
-    # #     #            10                  1000                86.71454219030521
-    # #     #             5                   200                78.27648114901257
-    # run_neuralnetwork_classifier(x_train, y_train, x_test, y_test, 4)
-    # #     Naive Bayes
-    # #     Result:
-    # run_naivebayes_classifier(x_train, y_train, x_test, y_test)
 
 
 if __name__ == '__main__':
