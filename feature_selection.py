@@ -58,16 +58,16 @@ def preprocessing_data(data):
 ## this method returns a dataframe with feature sets, which are tfidf coefs
 def extract_tfidf_feature_sets(data):
 	# create an empty dictionary
-	vocab = dict()
-	# the keys in the vocab dictionary are the tokens appeared in the corpus, 
+	token = dict()
+	# the keys in the token dictionary are the tokens appeared in the corpus, 
 	# and their corresponding values are how many times they appeared in corpus
 	for text in data['to_be_analyzed'].values:
 		for ele in text.split(" "):
-			vocab[ele] = vocab.get(ele, 0) + 1
+			token[ele] = token.get(ele, 0) + 1
 	
 	# The df dictionary is to record how many times each word appears in the corpus
 	df = dict()
-	for word in vocab.keys():
+	for word in token.keys():
 		df[word] = np.sum(data['to_be_analyzed'].apply(lambda x: 1 if word in x else 0))
 	
 	# In order to calculate idf, I used the formula idf = 1 + log(N/(1+ d(w))) 
@@ -76,32 +76,32 @@ def extract_tfidf_feature_sets(data):
 	idf = {k:1+np.log(data.shape[0]/(1+v)) for k, v in df.items()}
 
 	# store the tdidf into the dataframe
-	for ele in vocab.keys():
+	for ele in token.keys():
 		data[ele] = data['to_be_analyzed'].apply(lambda x: x.count(ele)/float(len(x)+1)* idf[ele] if ele in x else 0)
 	return data
 
 ## this method returns a dataframe with feature sets, which are the counts of words appeared in a single documents.
 def extact_count_feature_sets(data):
 	# create an empty dictionary, and calculated how many time they appeared in corpus
-	vocab = dict()
+	token = dict()
 	for text in data['to_be_analyzed'].values:
 		for ele in text.split(" "):
-			vocab[ele] = vocab.get(ele, 0) + 1
+			token[ele] = token.get(ele, 0) + 1
 
 	# store the count information in dataframe
-	for ele in vocab.keys():
+	for ele in token.keys():
 		data[ele] = data['to_be_analyzed'].apply(lambda x: x.count(ele) if ele in x else 0)
 	return data
 
 ## this method returns a dataframe with feature sets, which are the words percentages in each document.
 def extact_percentage_feature_sets(data):
 	# create an empty dictionary, and calculated how many time they appeared in corpus
-	vocab = dict()
+	token = dict()
 	for text in data['to_be_analyzed'].values:
 		for ele in text.split(" "):
-			vocab[ele] = vocab.get(ele, 0) + 1
+			token[ele] = token.get(ele, 0) + 1
 	# store the percentages of each word in document d in dataframe
-	for ele in vocab.keys():
+	for ele in token.keys():
 		data[ele] = data['to_be_analyzed'].apply(lambda x: x.count(ele)/float(len(x) + 1) if ele in x else 0)
 	return data
 
@@ -129,5 +129,8 @@ if __name__ == '__main__':
 	accuracy_count = test_accuracy(data_with_count_feature_sets)
 	accuracy_percentage = test_accuracy(data_with_percentage_feature_sets)
 
+	# 0.8624401913875598
+	# 0.8648325358851675
+	# 0.8672248803827751
 
 
