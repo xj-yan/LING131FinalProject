@@ -19,9 +19,11 @@ In part three, we write a program that interacts with a user through command lin
 
 ### 2.2 Data pre-processing
 The main skeleten of this part is in the file "data_processing.py". User can call "dataPrepro(raw_text, y_enc)" method to get a tokenized data "data_tokenized" in the form like below:
-  [[feature1_value, feature2_value, feature3_value..., label],
+```text
+[[feature1_value, feature2_value, feature3_value..., label],
   ...
-  [feature1_value, feature2_value, feature3_value..., label]]
+[feature1_value, feature2_value, feature3_value..., label]]
+```
 in which each feature value defines whether a n-gram(unigram or bigram) is in the sentence.
 
 "stemmer.py" is a Stemmer class that import into "data_processing.py" for stemming the data. We building this stemmer under the idea of Porter Stemming.
