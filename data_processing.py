@@ -258,5 +258,4 @@ def dataPrepro(raw_text, y_enc):
     print('done, the data size is:', data_tokenized.shape[0], 'the feature size is ', data_tokenized.shape[1] - 1)
     return data_tokenized
 
-print("hello")
 
