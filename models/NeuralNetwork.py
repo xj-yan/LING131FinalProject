@@ -6,7 +6,13 @@ class NeuralNetwork(AbstractClassifier):
     """docstring for NeuralNetwork"""
     def __init__(self, x, y, dim2):
         """
-        Intitialization
+        Initialization
+
+        :param x: feature set
+        :param y: label (class)
+        :param dim2: hidden layer dimension
+
+        fields:
         _input: feature sets
            type: array
         _labels: labels
@@ -72,6 +78,7 @@ class NeuralNetwork(AbstractClassifier):
         self._hidden_layer = self.sigmoid(np.dot(self._input, self._weight1))
         self._output = self.sigmoid(np.dot(self._hidden_layer, self._weight2))
 
+    # override
     def train(self, number_of_iterations=None):
         """
         Train the data set
@@ -93,6 +100,7 @@ class NeuralNetwork(AbstractClassifier):
             self._weight1 += w1
             self._weight2 += w2
 
+    # override
     def classify(self, x_test):
         """
         Classify the input data
