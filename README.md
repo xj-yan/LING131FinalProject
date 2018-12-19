@@ -18,6 +18,7 @@ This file can be directly run with'python3 analysis_sklearn.py'.
 The printed out result of this commond should looks like the follows:
 
 With count feature
+
     classification rate for Adaboost:(the accuracy here)
     classification report(table) for this combination of Adaboost model and count feature
     classification rate for multinomialNB: (the accuracy here)
