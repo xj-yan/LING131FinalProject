@@ -15,14 +15,14 @@ class Stemmer:
         '''
         if buffer[index] is a consonant.
         '''
-        consonant_list = ['a','e','i','o','u']
-        if(self.buffer[index] in consonant_list):
+        consonant_list = ['a', 'e', 'i', 'o', 'u']
+        if self.buffer[index] in consonant_list:
             return False
-        elif(self.buffer[index] == 'y'):
-            if(index == self.p0):
+        elif self.buffer[index] == 'y':
+            if index == self.p0:
                 return True
             else:
-                return (not self.isCons(index - 1))
+                return not self.isCons(index - 1)
         else:
             return True
 
@@ -71,12 +71,12 @@ class Stemmer:
         '''
         if index < (self.p0 + 1):
             return True
-        elif (self.buffer[index] != self.buffer[index-1]):
+        elif self.buffer[index] != self.buffer[index-1]:
             return False
         else:
             return self.isCons(index)
 
-    def endWithStr(self,string):
+    def endWithStr(self, string):
         '''
         if buffer[p0:p+1] ends with string
         '''
