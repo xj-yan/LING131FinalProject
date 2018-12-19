@@ -74,15 +74,17 @@ def main():
     # Step 1: feature extraction
     x1 = raw_count_feature(copy.copy(X))
     # Step 2: feature scaling
-    # x1 = preprocessing.scale(x1)
+    x1 = preprocessing.scale(x1)
     # Step 3: divide into training and test set
     x_train, y_train, x_test, y_test = train_test_split(x1, y, 0.9)
     # Step 4: run classifiers
-    #     Neural Network: 20 neurons in hidden layer; 1000 iterations
-    #     Result: iteration time 2000: 86.71454219030521
-    run_neuralnetwork_classifier(x_train, y_train, x_test, y_test, 20, 2000)
-    #     Naive Bayes
-    #     Result: 86.983842010772
+    #     Neural Network: 20 neurons in hidden layer; 2000 iterations
+    #     neurons in hidden layer        iteration time              RESULT
+    #             4                        600                59.06642728904848
+    #             4                        400                57.091561938958705
+    run_neuralnetwork_classifier(x_train, y_train, x_test, y_test, 4, 400)
+    #     Naive Bayes:
+    #     Result: 87.07
     run_naivebayes_classifier(x_train, y_train, x_test, y_test)
 
     # 2. TF-IDF
@@ -90,19 +92,21 @@ def main():
     # Step 1: feature extraction
     x2 = tfidf_feature(copy.deepcopy(X))
     # Step 2: feature scaling
-    x2 = preprocessing.scale(x2) # feature scaling
+    x2 = preprocessing.scale(x2)
     # Step 3: divide into training and test set
     x_train, y_train, x_test, y_test = train_test_split(x2, y, 0.9)
 
     # Step 4: run classifiers
-    #     Neural Network: 20 neurons in hidden layer
-    #     Result: iteration time 5000: 86.71454219030521
-    run_neuralnetwork_classifier(x_train, y_train, x_test, y_test, 20, 2000)
-    #     Naive Bayes
-    #     Result: 87.07360861759426
+    #     Neural Network:
+    #     neurons in hidden layer        iteration time              RESULT
+    #             4                         600                91.38240574506284
+    #             4                         400                88.50987432675045
+    run_neuralnetwork_classifier(x_train, y_train, x_test, y_test, 4, 400)
+    #     Naive Bayes:
+    #     Result: 87.07
     run_naivebayes_classifier(x_train, y_train, x_test, y_test)
 
-
+    #
     #
     # # 3. Most frequent 200 words
     # print('Feature: Most frequent 200 words')
@@ -113,8 +117,10 @@ def main():
     # # Step 3: divide into training and test set
     # x_train, y_train, x_test, y_test = train_test_split(x3, y, 0.9)
     # # Step 4: run classifiers
-    # #     Neural Network: 4 neurons in hidden layer
-    # #     Result: iteration time :
+    # #     Neural Network:
+    # #     neurons in hidden layer        iteration time              RESULT
+    # #     #            10                  1000                86.71454219030521
+    # #     #             5                   200                78.27648114901257
     # run_neuralnetwork_classifier(x_train, y_train, x_test, y_test, 4)
     # #     Naive Bayes
     # #     Result:
