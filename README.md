@@ -18,7 +18,7 @@ In part three, we write a program that interacts with a user through command lin
 
 
 ### 2.2 Data pre-processing
-The main skeleten of this part is in the file "data_processing.py". user can call "dataPrepro(raw_text, y_enc)" method inside to get a tokenized data "data_tokenized" in the form like below:
+The main skeleten of this part is in the file "data_processing.py". User can call "dataPrepro(raw_text, y_enc)" method to get a tokenized data "data_tokenized" in the form like below:
   [[feature1_value, feature2_value, feature3_value..., label],
   ...
   [feature1_value, feature2_value, feature3_value..., label]]
