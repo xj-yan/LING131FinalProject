@@ -36,3 +36,6 @@ Self-built NeuralNetwork Accuracy with Raw Count:  85.278276481149
 Self-built NaiveBayes Accuracy with Raw Count:  87.07360861759426
 ```
 There might be several warnings in between lines, but generally they do not affect the result. So please ignore them.
+
+
+## Part Three: Client Code
