@@ -131,7 +131,7 @@ if __name__ == '__main__':
 	print("Feature sets: count") 
 	print("Accuracy scores: ")
 	accuracy_count = test_accuracy(data_with_count_feature_sets)
-	print("Feature sets: tf-idf")
+	print("Feature sets: percentage")
 	print("Accuracy scores: ")
 	accuracy_percentage = test_accuracy(data_with_percentage_feature_sets)
 	print("Feature sets: tf-idf")
