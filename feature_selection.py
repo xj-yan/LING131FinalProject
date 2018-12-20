@@ -2,6 +2,9 @@
 The file is designed to generate feature sets.
 I tried three ways to generate features sets, including tdidf coefficients, raw counts, and percentage of each word in single document.
 
+Just use the command "python feature_selection.py" could run this script. 
+The file would extract feature sets in three strategies and print their classification scores.
+
 """
 
 
@@ -129,8 +132,5 @@ if __name__ == '__main__':
 	accuracy_count = test_accuracy(data_with_count_feature_sets)
 	accuracy_percentage = test_accuracy(data_with_percentage_feature_sets)
 
-	# 0.8624401913875598
-	# 0.8648325358851675
-	# 0.8672248803827751
 
 
