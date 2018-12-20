@@ -128,9 +128,15 @@ if __name__ == '__main__':
 	data_with_tfidf_feature_sets = extract_tfidf_feature_sets(data)
 	data_with_count_feature_sets = extact_count_feature_sets(data)
 	data_with_percentage_feature_sets = extact_percentage_feature_sets(data)
-	accuracy_tdidf = test_accuracy(data_with_tfidf_feature_sets)
+	print("Feature sets: count") 
+	print("Accuracy scores: ")
 	accuracy_count = test_accuracy(data_with_count_feature_sets)
+	print("Feature sets: tf-idf")
+	print("Accuracy scores: ")
 	accuracy_percentage = test_accuracy(data_with_percentage_feature_sets)
+	print("Feature sets: tf-idf")
+	print("Accuracy scores: ")
+	accuracy_tdidf = test_accuracy(data_with_tfidf_feature_sets)
 
 
 
