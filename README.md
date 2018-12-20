@@ -34,7 +34,7 @@ and then the printed out result on the screen will repeat this format of results
 ### 2.1
 
 
-### 2.2 Data pre-processing
+### 2.2 Data pre-processing, stemming, and tokenization 
 The main skeleten of this part is in the file ```data_processing.py```. User can call ```dataPrepro(raw_text, y_enc)``` method to get a tokenized data "data_tokenized" in the form like below:
 ```text
 [[feature1_value, feature2_value, feature3_value..., label],
