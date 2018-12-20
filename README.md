@@ -66,7 +66,7 @@ The ouput should be something like below:
 Feature sets: count
 Accuracy scores: 
 0.83333333334
-Feature sets: tf-idf
+Feature sets: percetage
 Accuracy scores: 
 0.84787894865
 Feature sets: tf-idf
