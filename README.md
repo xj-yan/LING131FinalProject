@@ -35,7 +35,7 @@ and then the printed out result on the screen will repeat this format of results
 
 
 ### 2.2 Data pre-processing
-The main skeleten of this part is in the file "data_processing.py". User can call "dataPrepro(raw_text, y_enc)" method to get a tokenized data "data_tokenized" in the form like below:
+The main skeleten of this part is in the file ```data_processing.py```. User can call ```dataPrepro(raw_text, y_enc)``` method to get a tokenized data "data_tokenized" in the form like below:
 ```text
 [[feature1_value, feature2_value, feature3_value..., label],
   ...
@@ -43,9 +43,10 @@ The main skeleten of this part is in the file "data_processing.py". User can cal
 ```
 in which each feature value defines whether a n-gram(unigram or bigram) is in the sentence.
 
-The parameter ```text raw_text``` is a list of raw SMS text which can be extract from the second column of the dataset "spam.csv", the parameter y_enc is a list of label corresponding to the raw text which can be exrtact from the first column of the dataset "spam.csv". 
+The parameter ```raw_text``` is a list of raw SMS text which can be extract from the second column of the dataset ```spam.csv```.
+The parameter ```y_enc``` is a list of label corresponding to the raw text which can be exrtact from the first column of the dataset ```spam.csv```. 
 
-"stemmer.py" is a Stemmer class that import into "data_processing.py" for stemming the data. We building this stemmer under the idea of Porter Stemming.
+```stemmer.py``` is a Stemmer class that import into ```data_processing.py``` for stemming the data. We building this stemmer under the idea of Porter Stemming.
 
 
 ### 2.3 Spam Classification Using Self-written Models
