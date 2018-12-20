@@ -43,6 +43,8 @@ The main skeleten of this part is in the file "data_processing.py". User can cal
 ```
 in which each feature value defines whether a n-gram(unigram or bigram) is in the sentence.
 
+The parameter ```text raw_text``` is a list of raw SMS text which can be extract from the second column of the dataset "spam.csv", the parameter y_enc is a list of label corresponding to the raw text which can be exrtact from the first column of the dataset "spam.csv". 
+
 "stemmer.py" is a Stemmer class that import into "data_processing.py" for stemming the data. We building this stemmer under the idea of Porter Stemming.
 
 
