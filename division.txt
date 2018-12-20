@@ -1,0 +1,14 @@
+Ye Wang is responsible for part one, classification with scikit-learn models.
+Her code is in file analysis_sklearn.py.
+
+The second part is dividided into three sections.
+
+Jiaming He is responsible for section one, stemming, text-processing and tokenization.
+Her code is in file data_processing.py and Stemmer.py.
+
+Xiaojing Yan is responsible for section two, feature extraction.
+Her code is in file feature_selection.py
+
+Ye Hong is responsible for section three, building classification models.
+Her code for the models is in folder models, which includes AbstractClassifier.py, NaiveBayes.py and NeuralNetwork.py
+Her code to test the models is in file analysis_models.py
